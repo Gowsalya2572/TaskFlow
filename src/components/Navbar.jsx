@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { href, Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Button from "./Button";
 
@@ -8,6 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const navLinks = [
+    {label:"Home",href:"/"},
     { label: "Features", href: "/#features" },
     { label: "How It Works", href: "/#how-it-works" },
     { label: "Pricing", href: "/#pricing" },
@@ -84,7 +85,7 @@ const Navbar = () => {
             <Link
               to="/login"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-medium text-text-main"
+              className="text-sm font-medium text-text-main  "
             >
               Login
             </Link>
