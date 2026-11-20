@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import LandingPge from './pages/LandingPge'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-// import DashboardPage from './pages/DashboardPage'
+import DashboardPage from './pages/DashboardPage'
 import ProtectedRoute from './routes/ProtectedRoute'
 import DashboardLayout from './layout/DashboardLayout'
 import RoleRoute from './routes/RoleRoute'
@@ -18,12 +18,11 @@ const App = () => {
          <Route path='/' element={<LandingPge />} />
          <Route path='/login' element={<LoginPage/>}/>
          <Route path='/register' element={<RegisterPage/>}/>
-         {/* <Route path='/dashboard' element={<DashboardPage/>}/> */}
       </Route>
       
       <Route element={<ProtectedRoute/>}>
         <Route element={<DashboardLayout/>}>
-         <Route path='/dashboard' element={<Placeholder title="Dashboard"/>}/>
+         <Route path='/dashboard' element={<DashboardPage/>}/>
           <Route path='/projects' element={<Placeholder title="Projects"/>}/>
            <Route path='/my-tasks' element={<Placeholder title="My Tasks"/>}/>
            {/* Admin Only */}
