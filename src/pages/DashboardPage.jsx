@@ -3,8 +3,8 @@ import { useMemo } from "react";
 
 import useAuthStore from "../store/authStore";
 
-import { projects } from "../data/projects";
-import { tasks } from "../data/tasks";
+import { getProjects } from "../services/projectService";
+import { getTasks } from "../services/taskService";
 
 import {
   getDashboardStats,
@@ -18,6 +18,8 @@ import MyTasksWidget from "../components/MyTaskWidget";
 
 const DashboardPage = () => {
   const user = useAuthStore((state) => state.user);
+  const projects = getProjects();
+  const tasks = getTasks();
 
   const stats = useMemo(
     () => getDashboardStats(tasks),

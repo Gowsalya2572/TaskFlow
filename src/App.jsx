@@ -8,6 +8,9 @@ import DashboardPage from './pages/DashboardPage'
 import ProtectedRoute from './routes/ProtectedRoute'
 import DashboardLayout from './layout/DashboardLayout'
 import RoleRoute from './routes/RoleRoute'
+import ProjectsPage from './pages/ProjectsPage'
+import ProjectBoardPage from './pages/ProjectBoardPage'
+import TaskDetailsPage from './pages/TaskDetailsPage'
 
 const Placeholder = ({ title }) => <h1 className="text-2xl font-bold">{title}</h1>;
 const App = () => {
@@ -23,7 +26,9 @@ const App = () => {
       <Route element={<ProtectedRoute/>}>
         <Route element={<DashboardLayout/>}>
          <Route path='/dashboard' element={<DashboardPage/>}/>
-          <Route path='/projects' element={<Placeholder title="Projects"/>}/>
+          <Route path='/projects' element={<ProjectsPage/>}/>
+          <Route path="/projects/:projectId" element={<ProjectBoardPage />}/>
+          <Route path="/tasks/:taskId" element={<TaskDetailsPage />}/>
            <Route path='/my-tasks' element={<Placeholder title="My Tasks"/>}/>
            {/* Admin Only */}
            <Route element={<RoleRoute allowedRoles={["Admin"]}/>}>
