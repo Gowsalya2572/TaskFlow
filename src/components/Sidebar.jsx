@@ -26,7 +26,7 @@ const Sidebar = ({ onLogout }) => {
     },
     {
       name: "My Tasks",
-      path: "/my-tasks",
+      path: "/tasks",
       icon: CheckSquare,
     },
     {

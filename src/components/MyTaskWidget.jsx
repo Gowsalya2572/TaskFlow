@@ -36,7 +36,7 @@ const MyTaskWidget = ({ tasks = [] }) => {
         </h2>
 
         <Link
-          to="/my-tasks"
+          to="/tasks"
           className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
         >
           View all <ArrowRight size={15} />

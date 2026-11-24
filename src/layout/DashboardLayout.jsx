@@ -19,7 +19,7 @@ const DashboardLayout = () => {
     const titles = {
       "/dashboard": "Dashboard",
       "/projects": "Projects",
-      "/my-tasks": "My Tasks",
+      "/tasks": "My Tasks",
       "/team": "Team",
       "/analytics": "Analytics",
       "/settings": "Settings",

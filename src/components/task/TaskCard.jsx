@@ -23,7 +23,7 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
 
       <div className="flex items-start justify-between gap-2">
         <Link
-          to={`/tasks/${task.id}`}
+          to={`tasks/${task.id}`}
           className="min-w-0 flex-1 text-sm font-semibold text-text-main hover:text-primary"
         >
           {task.title}

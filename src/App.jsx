@@ -11,6 +11,7 @@ import RoleRoute from './routes/RoleRoute'
 import ProjectsPage from './pages/ProjectsPage'
 import ProjectBoardPage from './pages/ProjectBoardPage'
 import TaskDetailsPage from './pages/TaskDetailsPage'
+import MyTasksPage from './pages/MyTasksPage'
 
 const Placeholder = ({ title }) => <h1 className="text-2xl font-bold">{title}</h1>;
 const App = () => {
@@ -28,8 +29,8 @@ const App = () => {
          <Route path='/dashboard' element={<DashboardPage/>}/>
           <Route path='/projects' element={<ProjectsPage/>}/>
           <Route path="/projects/:projectId" element={<ProjectBoardPage />}/>
-          <Route path="/tasks/:taskId" element={<TaskDetailsPage />}/>
-           <Route path='/my-tasks' element={<Placeholder title="My Tasks"/>}/>
+            <Route path="/tasks" element={<MyTasksPage />} />
+            <Route path='tasks/:taskId' element={<TaskDetailsPage/>}/>
            {/* Admin Only */}
            <Route element={<RoleRoute allowedRoles={["Admin"]}/>}>
               <Route path='/team' element={<Placeholder title="Team" />}/>
