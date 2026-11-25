@@ -12,6 +12,7 @@ import ProjectsPage from './pages/ProjectsPage'
 import ProjectBoardPage from './pages/ProjectBoardPage'
 import TaskDetailsPage from './pages/TaskDetailsPage'
 import MyTasksPage from './pages/MyTasksPage'
+import TeamPage from './pages/TeamPage'
 
 const Placeholder = ({ title }) => <h1 className="text-2xl font-bold">{title}</h1>;
 const App = () => {
@@ -33,7 +34,7 @@ const App = () => {
             <Route path='tasks/:taskId' element={<TaskDetailsPage/>}/>
            {/* Admin Only */}
            <Route element={<RoleRoute allowedRoles={["Admin"]}/>}>
-              <Route path='/team' element={<Placeholder title="Team" />}/>
+              <Route path='/team' element={<TeamPage />}/>
 
               <Route path="/analytics" element={<Placeholder title="Analytics" />}/>
 

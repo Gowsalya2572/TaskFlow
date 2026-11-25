@@ -1,22 +1,39 @@
 
 import { demoUsers } from "../data/users";
+import { getTeamMembers } from "../services/teamService";
 
 const STORAGE_KEY = "taskflow_registered_users";
 
-// Get existing users and browser-registered demo users
-const getAllUsers = () => {
+// Get registered users
+const getRegisteredUsers = () => {
   try {
-    const savedUsers = JSON.parse(
+    return JSON.parse(
       localStorage.getItem(STORAGE_KEY) || "[]"
     );
-
-    return [...demoUsers, ...savedUsers];
   } catch {
-    return [...demoUsers];
+    return [];
   }
 };
 
-// Find demo user by email
+// Get users with the latest team roles
+const getAllUsers = () => {
+  const teamMembers = getTeamMembers();
+  const registeredUsers = getRegisteredUsers();
+
+  const allUsers = [...demoUsers, ...registeredUsers];
+
+  return allUsers.map((user) => {
+    const teamMember = teamMembers.find(
+      (member) => member.id === user.id
+    );
+
+    return teamMember
+      ? { ...user, role: teamMember.role }
+      : user;
+  });
+};
+
+// Login demo user
 export const loginDemoUser = (email) => {
   const normalizedEmail = email.trim().toLowerCase();
 
@@ -37,7 +54,7 @@ export const loginDemoUser = (email) => {
   };
 };
 
-// Register a new demo user
+// Register new demo user
 export const registerDemoUser = ({ name, email }) => {
   const normalizedEmail = email.trim().toLowerCase();
 
@@ -60,9 +77,7 @@ export const registerDemoUser = ({ name, email }) => {
   };
 
   try {
-    const savedUsers = JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || "[]"
-    );
+    const savedUsers = getRegisteredUsers();
 
     localStorage.setItem(
       STORAGE_KEY,
@@ -80,4 +95,3 @@ export const registerDemoUser = ({ name, email }) => {
     };
   }
 };
-
