@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {  Play } from "lucide-react";
 import Button from "../components/Button";
-
+import image from '../assets/hero.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const Home = () => {
     {/* Dashboard preview */}
     <div className="mx-auto mt-12 w-full max-w-5xl sm:mt-16 md:mt-20 lg:mt-24">
       <img
-        src='../src/assets/hero.png'
+        src={image}
         alt="TaskFlow project management dashboard"
         className="h-auto w-full object-contain"
       />
