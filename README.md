@@ -45,23 +45,30 @@ The application provides separate dashboards and permissions for Admins, Project
 - Manage user profile information.
 - Update account preferences.
   
-👥 User Roles
-Role	   Permissions
-Admin	   Manage users, projects, tasks, and workspace settings
-Project  Manager	Manage assigned projects, tasks, and project members
-Member	 Create projects, manage permitted tasks, and collaborate
-Viewer	 View assigned projects, tasks, and progress without editing
-Note: Project-level access is separate from workspace roles. A Member who creates a project can manage that project as its owner, while a Viewer has read-only access to assigned projects.
+## 👥 User Roles & Permissions
 
-🛠️ Technologies Used
-Technology	       Purpose
-React.js	         Frontend development
-JavaScript (ES6+)	 Application logic
-Tailwind CSS v4    Styling and responsive UI
-React Router	     Navigation and protected routes
-Zustand	           Global state management
-Lucide React	     Icons
-Recharts	         Analytics and charts
-Local Storage	     Demo data persistence
+| Role | Permissions |
+|---|---|
+| **Admin** | Manage users, projects, tasks, and workspace settings |
+| **Project Manager** | Manage assigned projects, tasks, and project members |
+| **Member** | Create projects, manage permitted tasks, and collaborate |
+| **Viewer** | View assigned projects, tasks, and progress without editing |
+
+> **Note:** Project-level access is separate from workspace roles. A Member who creates a project can manage that project as its owner, while a Viewer has read-only access to assigned projects.
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| React.js | Frontend development |
+| Vite | Development and build tool |
+| Tailwind CSS v4 | Styling and responsive design |
+| JavaScript (ES6+) | Application logic |
+| React Router  | Client-side navigation and protected routes |
+| Zustand | Global state management |
+| Lucide React | Icons |
+| Recharts | Analytics and data visualization |
+| LocalStorage / SessionStorage | Demo data persistence and authentication |
+| Git & GitHub | Version control and source code management |
 Vite	             Development server and build tool
 Git & GitHub	     Version control and code hosting
