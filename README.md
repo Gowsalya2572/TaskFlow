@@ -46,21 +46,22 @@ The application provides separate dashboards and permissions for Admins, Project
 - Update account preferences.
   
 👥 User Roles
-Role	Permissions
-Admin	Manage users, projects, tasks, and workspace settings
-Project Manager	Manage assigned projects, tasks, and project members
-Member	Create projects, manage permitted tasks, and collaborate
-Viewer	View assigned projects, tasks, and progress without editingNote: Project-level access is separate from workspace roles. A Member who creates a project can manage that project as its owner, while a Viewer has read-only access to assigned projects.
+Role	   Permissions
+Admin	   Manage users, projects, tasks, and workspace settings
+Project  Manager	Manage assigned projects, tasks, and project members
+Member	 Create projects, manage permitted tasks, and collaborate
+Viewer	 View assigned projects, tasks, and progress without editing
+Note: Project-level access is separate from workspace roles. A Member who creates a project can manage that project as its owner, while a Viewer has read-only access to assigned projects.
 
 🛠️ Technologies Used
-Technology	Purpose
-React.js	Frontend development
-JavaScript (ES6+)	Application logic
-Tailwind CSS v4	Styling and responsive UI
-React Router	Navigation and protected routes
-Zustand	Global state management
-Lucide React	Icons
-Recharts	Analytics and charts
-Local Storage	Demo data persistence
-Vite	Development and build tool
-Git & GitHub	Version control
+Technology	       Purpose
+React.js	         Frontend development
+JavaScript (ES6+)	 Application logic
+Tailwind CSS v4    Styling and responsive UI
+React Router	     Navigation and protected routes
+Zustand	           Global state management
+Lucide React	     Icons
+Recharts	         Analytics and charts
+Local Storage	     Demo data persistence
+Vite	             Development server and build tool
+Git & GitHub	     Version control and code hosting
