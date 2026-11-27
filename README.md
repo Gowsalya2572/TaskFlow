@@ -70,5 +70,3 @@ The application provides separate dashboards and permissions for Admins, Project
 | Recharts | Analytics and data visualization |
 | LocalStorage / SessionStorage | Demo data persistence and authentication |
 | Git & GitHub | Version control and source code management |
-Vite	             Development server and build tool
-Git & GitHub	     Version control and code hosting
