@@ -6,6 +6,7 @@ import Alert from '../components/Alert';
 
 import useAuthStore from '../store/authStore'
 import { useState } from "react";
+import image from '../assets/login.png';
 
 
 const LoginPage = () => {
@@ -43,7 +44,7 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      const result = login(formData.email);
+      const result = login(formData.email, formData.password);
 
       if (!result.success) {
         setError(result.message);
@@ -94,7 +95,7 @@ const LoginPage = () => {
             </p>
           </div>
         </div>
-        <img src="../src/assets/login.png" alt="login image" className="mt-3 mb-7" />
+        <img src={image} alt="login image" className="mt-3 mb-7" />
 
         <p className="text-xs text-slate-400">
           Better teamwork starts here.
@@ -124,7 +125,14 @@ const LoginPage = () => {
         </p>
       </div>
 
-      {error && <Alert type="error" message={error} />}
+      {error && (
+  <div
+    role="alert"
+    className="fixed right-5 top-5 z-50 max-w-sm rounded-lg border border-red-200 bg-white px-5 py-4 text-sm font-medium text-red-600 shadow-xl"
+  >
+    {error}
+  </div>
+)}
 
       <Input
         label="Email"

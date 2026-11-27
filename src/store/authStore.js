@@ -13,9 +13,8 @@ const useAuthStore = create(
       user: null,
       isAuthenticated: false,
 
-      // Login action
-      login: (email) => {
-        const result = loginDemoUser(email);
+      login: (email, password) => {
+        const result = loginDemoUser(email, password);
 
         if (!result.success) {
           return result;
@@ -29,9 +28,12 @@ const useAuthStore = create(
         return result;
       },
 
-      // Registration action
-      register: ({ name, email }) => {
-        const result = registerDemoUser({ name, email });
+      register: ({ name, email, password }) => {
+        const result = registerDemoUser({
+          name,
+          email,
+          password,
+        });
 
         if (!result.success) {
           return result;
@@ -45,13 +47,17 @@ const useAuthStore = create(
         return result;
       },
 
-      // Logout action
       logout: () => {
         set({
           user: null,
           isAuthenticated: false,
         });
       },
+
+      updateUser: (userData) =>
+        set((state) => ({
+          user: { ...state.user, ...userData },
+        })),
     }),
     {
       name: "taskflow-auth",

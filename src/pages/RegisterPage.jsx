@@ -61,6 +61,7 @@ const RegisterPage = () => {
       const result = register({
         name: formData.name,
         email: formData.email,
+        password: formData.password,
       });
 
       if (!result.success) {
@@ -143,7 +144,14 @@ const RegisterPage = () => {
         </p>
       </div>
 
-      {error && <Alert type="error" message={error} />}
+     {error && (
+  <div
+    role="alert"
+    className="fixed right-5 top-5 z-50 max-w-sm rounded-lg border border-red-200 bg-white px-5 py-4 text-sm font-medium text-red-600 shadow-xl"
+  >
+    {error}
+  </div>
+)}
 
       <Input
         label="Full Name"

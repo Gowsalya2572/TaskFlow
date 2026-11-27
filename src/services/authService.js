@@ -4,25 +4,21 @@ import { getTeamMembers } from "../services/teamService";
 
 const STORAGE_KEY = "taskflow_registered_users";
 
-// Get registered users
+// Get registered users from localStorage
 const getRegisteredUsers = () => {
   try {
-    return JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || "[]"
-    );
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
   } catch {
     return [];
   }
 };
 
-// Get users with the latest team roles
+// Get all users and their latest team roles
 const getAllUsers = () => {
   const teamMembers = getTeamMembers();
   const registeredUsers = getRegisteredUsers();
 
-  const allUsers = [...demoUsers, ...registeredUsers];
-
-  return allUsers.map((user) => {
+  return [...demoUsers, ...registeredUsers].map((user) => {
     const teamMember = teamMembers.find(
       (member) => member.id === user.id
     );
@@ -33,8 +29,8 @@ const getAllUsers = () => {
   });
 };
 
-// Login demo user
-export const loginDemoUser = (email) => {
+// Login: check both email and password
+export const loginDemoUser = (email, password) => {
   const normalizedEmail = email.trim().toLowerCase();
 
   const user = getAllUsers().find(
@@ -44,18 +40,32 @@ export const loginDemoUser = (email) => {
   if (!user) {
     return {
       success: false,
-      message: "No account found with this email.",
+      message: "No account found with this email. Please sign up.",
     };
   }
 
+  if (!user.password || user.password !== password) {
+    return {
+      success: false,
+      message: "Incorrect password. Please try again.",
+    };
+  }
+
+  // Do not expose the password in the authenticated user object
+  const { password: savedPassword, ...safeUser } = user;
+
   return {
     success: true,
-    user,
+    user: safeUser,
   };
 };
 
-// Register new demo user
-export const registerDemoUser = ({ name, email }) => {
+// Register: save the new user's password too
+export const registerDemoUser = ({
+  name,
+  email,
+  password,
+}) => {
   const normalizedEmail = email.trim().toLowerCase();
 
   const existingUser = getAllUsers().find(
@@ -73,6 +83,7 @@ export const registerDemoUser = ({ name, email }) => {
     id: `demo-${Date.now()}`,
     name: name.trim(),
     email: normalizedEmail,
+    password,
     role: "Member",
   };
 
@@ -84,14 +95,17 @@ export const registerDemoUser = ({ name, email }) => {
       JSON.stringify([...savedUsers, newUser])
     );
 
+    const { password: savedPassword, ...safeUser } = newUser;
+
     return {
       success: true,
-      user: newUser,
+      user: safeUser,
     };
   } catch {
     return {
       success: false,
-      message: "Unable to save your demo account in this browser.",
+      message: "Unable to save your account. Please try again.",
     };
   }
 };
+
